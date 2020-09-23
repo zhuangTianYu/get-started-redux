@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Menu from './components/menu'
 import Login from './pages/login'
-import School from './pages/school'
+import Teacher from './pages/teacher'
 import Student from './pages/student'
 import './App.scss'
 
@@ -19,8 +19,8 @@ const App = () => {
             <div className="container">
               <div className="header">header</div>
               <div className="content">
-                <Route path="/school">
-                  <School />
+                <Route path="/teacher">
+                  <Teacher />
                 </Route>
                 <Route path="/student">
                   <Student />

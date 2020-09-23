@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import './index.scss'
 
 const menuList = [
-  { path: '/school', name: 'school' },
+  { path: '/teacher', name: 'teacher' },
   { path: '/student', name: 'student' }
 ]
 

@@ -17,12 +17,15 @@ const App = () => {
           <Route path="/">
             <Menu />
             <div className="container">
-              <Route path="/school">
-                <School />
-              </Route>
-              <Route path="/student">
-                <Student />
-              </Route>
+              <div className="header">header</div>
+              <div className="content">
+                <Route path="/school">
+                  <School />
+                </Route>
+                <Route path="/student">
+                  <Student />
+                </Route>
+              </div>
             </div>
           </Route>
         </Switch>

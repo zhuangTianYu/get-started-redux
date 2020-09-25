@@ -1,31 +1,44 @@
 import React, { useEffect, useState } from 'react'
-import { fetchYearList } from '../../service'
-import '../../store'
+import { connect } from 'react-redux'
+import { fetchYear } from '../../store/actions'
 
-const Teacher = () => {
+const mapStateToProps = state => ({ year: state.year })
+
+const mapDispatchToProps = dispatch => ({
+  fetchYear: dispatch(fetchYear())
+})
+
+const Teacher = props => {
+  const { year } = props
+
   const [yearList, setYearList] = useState([])
 
   useEffect(() => {
-    fetchYearList()
-      .then(yearList => setYearList(yearList))
+    fetchYear()
   }, [])
+
+  useEffect(() => {
+    setYearList(year.list)
+  }, [year.list])
+
+  useEffect(() => {
+    year.error && console.log(year.error.message)
+  }, [year.error])
 
   return (
     <div className="teacher">
-      <div className="term-list">
-        teacher
-        <select>
-          {
-            yearList.map(item => (
-              <option value={item} key={item}>
-                {item}年
-              </option>
-            ))
-          }
-        </select>
-      </div>
+      teacher
+      <select>
+        {
+          yearList.map(item => (
+            <option value={item} key={item}>
+              {item}年
+            </option>
+          ))
+        }
+      </select>
     </div>
   )
 }
 
-export default Teacher
+export default connect(mapStateToProps, mapDispatchToProps)(Teacher)

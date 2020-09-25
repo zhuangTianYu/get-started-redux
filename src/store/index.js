@@ -1,24 +1,7 @@
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
+import thunkMiddleware from 'redux-thunk'
+import reducer from './reducer'
 
-const reducer = (state = 0, action) => {
-  switch (action.type) {
-    case 'INCREMENT':
-      return state + 1
-    case 'DECREMENT':
-      return state - 1
-    default:
-      return state
-  }
-}
-
-const store = createStore(reducer)
-
-store.subscribe(() =>
-  console.log(store.getState())
-)
-
-store.dispatch({ type: 'INCREMENT' })
-store.dispatch({ type: 'INCREMENT' })
-store.dispatch({ type: 'DECREMENT' })
+const store = createStore(reducer, applyMiddleware(thunkMiddleware))
 
 export default store
